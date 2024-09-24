@@ -1,5 +1,3 @@
-# Hyprland-Dots
-
 # My Wallpaper
 ![wallpaper](https://github.com/Grzrzegorzrz/Hyprland-Dots/blob/main/preview/wallpaper.png?raw=true)
 
