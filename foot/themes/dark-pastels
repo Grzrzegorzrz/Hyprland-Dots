@@ -1,0 +1,32 @@
+# -*- conf -*-
+# my personal adoption of konsole's dark pastels
+
+[cursor]
+color=14161b dcdccc
+
+[colors]
+# default text fore/background
+foreground=dcdccc
+background=2c2c2c
+
+# selected text
+selection-foreground=14161b
+selection-background=b0b0a2
+
+regular0=3f3f3f
+regular1=705050
+regular2=60b48a
+regular3=dfaf8f
+regular4=9ab8d7
+regular5=dc8cc3
+regular6=8cd0d3
+regular7=dcdccc
+
+bright0=709080
+bright1=dca3a3
+bright2=72d5a3
+bright3=f0dfaf
+bright4=94bff3
+bright5=ec93d3
+bright6=93e0e3
+bright7=ffffff
