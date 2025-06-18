@@ -4,17 +4,13 @@
     "height": 24,
     "spacing": 5,
 
-    "modules-left": ["hyprland/workspaces", "memory", "temperature"],
+    "modules-left": [ "hyprland/workspaces", "memory", "temperature" ],
     "modules-center": ["clock"],
-    "modules-right": ["wireplumber", "pulseaudio#microphone", "battery", "backlight", "network", "bluetooth", "tray"],
+    "modules-right": [ "wireplumber", "pulseaudio#microphone", "battery", "backlight", "network", "bluetooth", "tray"],
 
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
-
-        "format-icons": {
-        },
-        "icon-size": 10,
         "sort-by-number": true,
         "persistent-workspaces": {
             "1": [],
@@ -31,7 +27,7 @@
     },
 
     "clock": {
-        "format": "{:%Y.%m.%d | %H:%M}",
+        "format": "{:%Y/%m/%d  |  %H:%M     }",
         "tooltip-format": "<span size='8pt'>{calendar}</span>",
         "calendar": {
             "mode"          : "year",
@@ -49,22 +45,28 @@
     },
 
     "wireplumber": {
-        "format": "\udb81\udd7e  {volume}%",
+        "format": "{icon} {volume}%",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-muted": "\udb81\udd81",
+        "format-icons": [ "\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e" ],
         "max-volume": 140,
         "scroll-step": 5
     },
 
     "battery": {
         "bat": "BAT0",
-        "interval": 60,
-        "format": "{icon}  {capacity}%",
-        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+        "interval": 20,
+        "format": "{icon} {capacity}%",
+        "format-icons": {
+          "default": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82", "\udb80\udc79"],
+          "charging": [ "\udb82\udc9c", "\udb80\udc86", "\udb80\udc87", "\udb80\udc88", "\udb82\udc9d", "\udb80\udc89", "\udb82\udc9e", "\udb80\udc8a", "\udb80\udc8b", "\udb80\udc85" ],
+        }
     },
 
     "pulseaudio#microphone": {
-        "format": "{format_source}  ",
-        "format-source": "\uf130 {volume}%",
-        "format-source-muted": "\uf131 ",
+        "format": "{format_source}",
+        "format-source": "\udb80\udf6c {volume}%",
+        "format-source-muted": "<span color=\"#FF0000\">\udb80\udf6d</span>",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
@@ -73,18 +75,20 @@
 
 
     "backlight": {
-        "format": "\udb80\udcdf  {percent}%"
+        "format": "\udb80\udcdf {percent}%"
     },
 
     "memory": {
-        "interval": 30,
-        "format": "\uf4bc  {percentage}%"
+        "interval": 1,
+        "format": "\uefc5  {percentage}%"
     },
 
     "temperature": {
-        "format": "  {temperatureC}°C"
+        "interval": 1,
+        "format": " {temperatureC}°C",
+        "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
     },
-
+    
     "network": {
         "format": "",
         "format-ethernet": "\udb83\udc9d",

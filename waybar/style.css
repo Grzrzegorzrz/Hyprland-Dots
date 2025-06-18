@@ -28,8 +28,13 @@
 }
 
 #memory,
+#cpu,
 #temperature {
     padding-left: 1em
+}
+
+#memory {
+    padding-left: 2em
 }
 
 #wireplumber,
@@ -37,8 +42,13 @@
 #backlight,
 #language,
 #network,
-#pulseaudio#microphone
+#pulseaudio,
 #bluetooth,
 #tray {
     padding-right: 1em 
+}
+
+
+#wireplumber.muted {
+    color: #ff0000
 }

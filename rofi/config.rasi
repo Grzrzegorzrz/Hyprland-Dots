@@ -7,4 +7,12 @@ configuration {
   recursivebrowser {
     directory: "/";
   }
+  font:"JetBrainsMono Nerd Font 12";
+  kb-accept-entry: "Control+m,Return,KP_Enter,Control+l";
+  kb-remove-to-eol: "";
+  kb-element-prev: "";
+  kb-element-next: "";
+  kb-mode-complete: "Tab,ISO_Left_Tab";
+  kb-row-down: "Control+j,Control+n";
+  kb-row-up: "Control+k,Control+p";
 }
