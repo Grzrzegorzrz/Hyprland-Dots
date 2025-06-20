@@ -48,6 +48,21 @@
     padding-right: 1em 
 }
 
+#battery.warning {
+    color: #ece81a
+}
+
+#battery.critical {
+    color: #ff0000
+}
+
+#memory.warning {
+    color: #ece81a
+}
+
+#memory.critical {
+    color: #ff0000
+}
 
 #wireplumber.muted {
     color: #ff0000
