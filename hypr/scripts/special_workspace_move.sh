@@ -8,12 +8,12 @@ if [ "$output" = "Not moving to workspace because it didn't change." ]; then
     $(hyprctl dispatch movetoworkspace "special")
   fi
 
-  while getopts 'dtsve' flag; do
+  while getopts 'dtsveu' flag; do
     case $flag in
       d)
         $(hyprctl dispatch movetoworkspace "special:discord")
       ;;
-      t)
+      u)
         $(hyprctl dispatch movetoworkspace "special:thunderbird")
       ;;
       s)
@@ -27,6 +27,9 @@ if [ "$output" = "Not moving to workspace because it didn't change." ]; then
       ;;
       e)
         $(hyprctl dispatch movetoworkspace "special:e")
+      ;;
+      t)
+        $(hyprctl dispatch movetoworkspace "special:top")
       ;;
       *)
         $(hyprctl dispatch movetoworkspace "special")

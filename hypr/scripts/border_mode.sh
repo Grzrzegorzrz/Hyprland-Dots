@@ -13,7 +13,7 @@ else
   # bordered mode (default)
   hyprctl keyword decoration:dim_inactive false
 
-  hyprctl keyword general:border_size 2
-  hyprctl keyword general:gaps_in 0
-  hyprctl keyword general:gaps_out 4
+  hyprctl keyword general:border_size 3
+  hyprctl keyword general:gaps_in 3
+  hyprctl keyword general:gaps_out 6
 fi
