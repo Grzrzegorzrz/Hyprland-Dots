@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # script that allows for multiple seperate instances of a floating temporary
 # screenshot using hyprshot + feh. Make sure feh has a floating window rule:
