@@ -14,6 +14,6 @@ else
   hyprctl keyword decoration:dim_inactive false
 
   hyprctl keyword general:border_size 3
-  hyprctl keyword general:gaps_in 3
+  hyprctl keyword general:gaps_in -1
   hyprctl keyword general:gaps_out 6
 fi
