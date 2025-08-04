@@ -1,10 +1,9 @@
 # -*- conf -*-
 # my personal adoption of konsole's dark pastels
 
-[cursor]
-color=14161b dcdccc
-
 [colors]
+cursor=14161b dcdccc
+
 # default text fore/background
 foreground=dcdccc
 background=2c2c2c
