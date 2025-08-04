@@ -47,7 +47,7 @@
     "wireplumber": {
         "format": "{icon} {volume}%",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "format-muted": "\udb81\udd81",
+        "format-muted": "\udb81\udd81  ",
         "format-icons": [ "\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e" ],
         "max-volume": 140,
         "scroll-step": 5
@@ -70,7 +70,7 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": "\udb80\udf6c {volume}%",
-        "format-source-muted": "<span color=\"#FF0000\">\udb80\udf6d</span>",
+        "format-source-muted": "<span color=\"#FF0000\">  \udb80\udf6d  </span>",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
