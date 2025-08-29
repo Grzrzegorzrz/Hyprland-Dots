@@ -7,6 +7,7 @@
 keymap = [
         # Greg's Personal
         { on = [ "<C-s>" ], run = 'shell "$SHELL" --block --confirm' },
+        { on = [ "<C-j>" ], run = 'shell "nvim ./" --block --confirm' },
         { on = [ "<C-n>" ], run = '''shell ' dragon-drop -x -i -T "$1"' --confirm''' },
         { on = [ "<C-e>" ], run = '''shell --
           paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
