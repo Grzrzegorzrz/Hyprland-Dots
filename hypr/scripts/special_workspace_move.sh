@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 output="$(hyprctl dispatch movetoworkspace "r+0")"
 
