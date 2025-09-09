@@ -2,12 +2,9 @@
 
 # bunch of spaghetti... will clean eventually
 
-# temp subs for activewindow
-# have range
-
-# temp file line...
-#   1 -> curr workspace
-#   2 -> upper bound of workspaces
+# temp file line:
+#   1 -> current workspace
+#   2 -> upper bound for workspaces
 
 temp=~/.config/hypr/scripts/vertical_temp
 
