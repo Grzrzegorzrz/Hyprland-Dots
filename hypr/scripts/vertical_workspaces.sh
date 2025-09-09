@@ -29,7 +29,7 @@ upper=$(hyprctl clients -j \
            | tail -n 1
 )
 if [ "$upper" == "" ]; then
-  upper=1
+  upper=0
 fi
 sed -i "2s/.*/$upper/" $temp
 
@@ -44,16 +44,26 @@ else
   next_layer=$(($layer + $1))
 fi
 
-if [ "$next_layer" == "-1" ]; then
-  next_layer=$(($upper))
-fi
-
 # if past upper bound
-if [ "$next_layer" == "$(($upper + 1))" ]; then
-  if [ "$move" == true ]; then
+if [ $next_layer -gt $(($upper)) ] && [ ! "$next_layer" == "1" ]; then
+  if [ "$move" == true ] && [ ! $next_layer -eq $(($upper+1)) ]; then
     sed -i "2s/.*/$(($next_layer))/" $temp
   else
     next_layer=0
+  fi
+fi
+
+# cycle downwards
+if [ "$next_layer" == "-1" ]; then
+  if [ "$upper" == "0" ]; then
+    next_layer=$(($upper+1))
+
+  else
+    next_layer=$(($upper))
+
+    if [ "$move" == true ]; then
+      next_layer=$(($next_layer+1))
+    fi
   fi
 fi
 
@@ -61,7 +71,7 @@ fi
 if [ $next_layer -eq 0 ]; then
 
   if [ "$move" == true ]; then
-    hyprctl dispatch movetoworkspace $(($(hyprctl activeworkspace | awk '{print $3}')))
+    hyprctl dispatch movetoworkspace $(($(hyprctl activeworkspace | awk 'NR==1 {print $3}')))
     echo "condition: zeroth + move"
   else
     hyprctl dispatch togglespecialworkspace void
