@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# allows for adding a window rule to make a window float using a keybind
+
 class=$(hyprctl activewindow | grep class | awk '{print $NF}')
 initialTitle=$(hyprctl activewindow | grep initialTitle | awk '{print $NF}')
 

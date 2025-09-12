@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# helper script for moving window to special workspaces
+
 output="$(hyprctl dispatch movetoworkspace "r+0")"
 
 if [ "$output" = "Not moving to workspace because it didn't change." ]; then

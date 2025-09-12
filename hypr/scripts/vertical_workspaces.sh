@@ -1,15 +1,30 @@
 #!/bin/sh
 
+# TODO: edgecase: persistent temp workspace int when unexpected switch from
+#                 vertical workspace, which becomes an issue when switching
+#                 back from an empty base workspace
+#           - possible soln: 'hyprctl activeworkspace' gives output for focused
+#                            blank workspaces, while 'hyprctl clients' only
+#                            gives non blank workspaces
+ 
 # bunch of spaghetti... will clean eventually
 
 # temp file line:
 #   1 -> current workspace
 #   2 -> upper bound for workspaces
 
+# behavior:
+# - going up will toggle the above workspace if it is within bounds. else cycle
+# - going downwards will toggle downwards, or cycle if on normal workspace
+# - moving a window upwards will move it upwards. else cycle
+# - moving a window downwards will move it downards, or cycle to a new
+#   workspace above the current up-most if currently on normal workspace
+# - vertical workspace 1 is persistent
+
 temp=~/.config/hypr/scripts/vertical_temp
 
 if [ ! -f $temp ]; then
-  printf "0\n1" >> $temp
+  printf "0" >> $temp
 fi
 
 window=$(hyprctl activewindow)
@@ -31,7 +46,6 @@ upper=$(hyprctl clients -j \
 if [ "$upper" == "" ]; then
   upper=0
 fi
-sed -i "2s/.*/$upper/" $temp
 
 if [ $1 == "--move" ]; then
   move=true
@@ -39,18 +53,17 @@ if [ $1 == "--move" ]; then
 fi
 
 if [ "$window" == "Invalid" ]; then
-  next_layer=$(($(head -n 1 $temp) + $1))
+  layer=$(($(cat $temp)))
+fi
+if [ $(($layer)) -gt $upper ]; then
+  next_layer=$upper
 else
   next_layer=$(($layer + $1))
 fi
 
 # if past upper bound
 if [ $next_layer -gt $(($upper)) ] && [ ! "$next_layer" == "1" ]; then
-  if [ "$move" == true ] && [ ! $next_layer -eq $(($upper+1)) ]; then
-    sed -i "2s/.*/$(($next_layer))/" $temp
-  else
     next_layer=0
-  fi
 fi
 
 # cycle downwards
@@ -79,7 +92,7 @@ if [ $next_layer -eq 0 ]; then
     echo "condition: zeroth"
   fi
 
-  sed -i "1s/.*/0/" $temp
+  echo 0 > $temp
 
 else
   if [ "$move" == true ]; then
@@ -90,10 +103,9 @@ else
     echo "condition: vertical"
   fi
 
-  sed -i "1s/.*/$next_layer/" $temp
+  echo $next_layer > $temp
 fi
 
 echo "next_layer: $next_layer"
 echo "upper: $upper"
-echo "current workspace: $(head -n 1 $temp)"
-echo "upperbound: $(tail -n 1 $temp)"
+echo "current workspace: $(cat $temp)"
