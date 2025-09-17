@@ -1,13 +1,9 @@
-
-//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
-
-@theme "~/.config/rofi/themes/gruvbox-dark-hard.rasi"
-
 configuration {
+  modes: [window,drun,run,ssh,recursivebrowser];
   recursivebrowser {
     directory: "/";
+    filter-regex: "^(proc|temp)(/|$)";
   }
-  font:"JetBrainsMono Nerd Font 12";
   kb-accept-entry: "Control+m,Return,KP_Enter,Control+l";
   kb-remove-to-eol: "";
   kb-element-prev: "";
@@ -16,3 +12,6 @@ configuration {
   kb-row-down: "Control+j,Control+n";
   kb-row-up: "Control+k,Control+p";
 }
+
+// @theme "~/.config/rofi/themes/gruvbox-dark-hard.rasi"
+@theme "~/.config/rofi/themes/material.rasi"
