@@ -9,7 +9,7 @@
  
 # bunch of spaghetti... will clean eventually
 
-# temp file line:
+# index_file file line:
 #   1 -> current workspace
 #   2 -> upper bound for workspaces
 
@@ -21,10 +21,10 @@
 #   workspace above the current up-most if currently on normal workspace
 # - vertical workspace 1 is persistent
 
-temp=~/.config/hypr/scripts/vertical_temp
+index_file=~/.config/hypr/scripts/vertical_index
 
-if [ ! -f $temp ]; then
-  printf "0" >> $temp
+if [ ! -f $index_file ]; then
+  printf "0" >> $index_file
 fi
 
 window=$(hyprctl activewindow)
@@ -53,7 +53,7 @@ if [ $1 == "--move" ]; then
 fi
 
 if [ "$window" == "Invalid" ]; then
-  layer=$(($(cat $temp)))
+  layer=$(($(cat $index_file)))
 fi
 if [ $(($layer)) -gt $upper ]; then
   next_layer=$upper
@@ -92,7 +92,7 @@ if [ $next_layer -eq 0 ]; then
     echo "condition: zeroth"
   fi
 
-  echo 0 > $temp
+  echo 0 > $index_file
 
 else
   if [ "$move" == true ]; then
@@ -103,9 +103,9 @@ else
     echo "condition: vertical"
   fi
 
-  echo $next_layer > $temp
+  echo $next_layer > $index_file
 fi
 
 echo "next_layer: $next_layer"
 echo "upper: $upper"
-echo "current workspace: $(cat $temp)"
+echo "current workspace: $(cat $index_file)"
