@@ -1,5 +1,8 @@
 configuration {
   modes: [window,drun,run,ssh,recursivebrowser];
+  drun {
+    filter-regex: "^(proc|temp)(/|$)";
+  }
   recursivebrowser {
     directory: "/";
     filter-regex: "^(proc|temp)(/|$)";

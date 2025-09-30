@@ -44,7 +44,9 @@ configuration {
 }
 
 window {
+  border-color: @fg;
   transparency: "rrealeal";
+  width: 35%;
 }
 
 mainbox {
@@ -58,29 +60,30 @@ inputbar {
 
 entry {
   background-color: inherit;
-  padding: 12px 3px;
+  padding: 15px 8px 12px;
 }
 
 prompt {
   background-color: inherit;
-  padding: 12px 18px;
+  padding: 15px 13px 12px 20px;
 }
 
 listview {
-  lines: 8;
+  lines: 6;
+  padding: 10px 0px 10px 0px;
 }
 
 element {
   children: [element-icon, element-text];
+  padding: 2px;
 }
 
 element-icon {
   size: 2ch;
-  padding: 10px 10px;
+  padding: 0px 15px 0px 15px;
 }
 
 element-icon selected {
-  background-color: @bg-selected;
 }
 
 element-text {
@@ -90,5 +93,4 @@ element-text {
 
 element-text selected {
   text-color: @fg;
-  background-color: @bg-selected;
 }
