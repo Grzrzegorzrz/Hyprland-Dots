@@ -6,8 +6,10 @@
 
 keymap = [
         # Greg's Personal
-        { on = [ "<C-s>" ], run = 'shell "$SHELL" --block --confirm' },
-        { on = [ "<C-j>" ], run = 'shell "nvim ./" --block --confirm' },
+        { on = [ "<C-j>" ], run = 'shell "$SHELL" --block --confirm' },
+        { on = [ "<C-s>" ], run = 'shell "nvim ./" --block --confirm' },
+        { on = [ "<C-k>" ], run = 'shell "sudo yazi ./" --block --confirm' },
+	{ on = [ "<C-c>" ], run = "escape" },
         { on = [ "<C-n>" ], run = '''shell ' dragon-drop -x -i -T "$1"' --confirm''' },
         { on = [ "<C-e>" ], run = '''shell --
           paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
@@ -18,7 +20,7 @@ keymap = [
 	{ on = "<C-[>", run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
 	{ on = "q",     run = "quit",               desc = "Quit the process" },
 	{ on = "Q",     run = "quit --no-cwd-file", desc = "Quit the process without outputting cwd-file" },
-	{ on = "<C-c>", run = "close",              desc = "Close the current tab, or quit if it's last" },
+	# { on = "<C-c>", run = "close",              desc = "Close the current tab, or quit if it's last" },
 	{ on = "<C-z>", run = "suspend",            desc = "Suspend the process" },
 
 	# Hopping
@@ -137,6 +139,7 @@ keymap = [
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Goto ~/.config" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Goto ~/Downloads" },
+	{ on = [ "g", "s" ],       run = "cd ~/Documents/school/third\\ year",   desc = "Goto school" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
 
 	# Tabs
@@ -207,7 +210,8 @@ keymap = [
 	{ on = "<Right>", run = "swipe 1",  desc = "Swipe to the previous file" },
 
 	# Copy
-	{ on = [ "c", "c" ], run = "copy cell", desc = "Copy selected cell" },
+	# { on = [ "c", "c" ], run = "copy cell", desc = "Copy selected cell" },
+	{ on = [ "y", "y" ], run = "copy cell", desc = "Copy selected cell" },
 
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
