@@ -23,9 +23,13 @@ done
 hyprshot -m region -f "/.float_images/float_$index.png"
 
 # wait for image to exist
-if [ ! -f ~/Pictures/.float_images/float_$index.png ]; then
-  sleep 0.05
-fi
+while [ ! -f ~/Pictures/.float_images/float_$index.png]; do
+  sleep 0.01
+done
+# wait for image to finish rendering
+while ! cmp -s "$HOME/Pictures/.float_images/float_$index.png" "$HOME/Pictures/.float_images/float_$index.png"; do
+  sleep 0.01
+done
 
 feh --auto-zoom --scale-down ~/Pictures/.float_images/float_$index.png
 
