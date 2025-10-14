@@ -20,7 +20,7 @@ while [ -f ~/Pictures/.float_images/float_$index.png ]; do
   ((index++))
 done
 
-hyprshot -m region -f "/.float_images/float_$index.png"
+flameshot gui -s -p "$HOME/Pictures/.float_images/float_$index.png"
 
 # wait for image to exist
 while [ ! -f ~/Pictures/.float_images/float_$index.png]; do
