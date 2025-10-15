@@ -9,21 +9,21 @@
 
 
 # create /Pictures/.float_images/ if non existent
-if [ ! -d ~/Pictures/.float_images ]; then
-  mkdir -p ~/Pictures/.float_images
+if [ ! -d $HOME/Pictures/.float_images ]; then
+  mkdir -p $HOME/Pictures/.float_images
 fi
 
 index=0
 
 # set index to the lowest number avaliable
-while [ -f ~/Pictures/.float_images/float_$index.png ]; do
+while [ -f $HOME/Pictures/.float_images/float_$index.png ]; do
   ((index++))
 done
 
 flameshot gui -s -p "$HOME/Pictures/.float_images/float_$index.png"
 
 # wait for image to exist
-while [ ! -f ~/Pictures/.float_images/float_$index.png]; do
+while [ ! -f $HOME/Pictures/.float_images/float_$index.png ]; do
   sleep 0.01
 done
 # wait for image to finish rendering
@@ -31,7 +31,7 @@ while ! cmp -s "$HOME/Pictures/.float_images/float_$index.png" "$HOME/Pictures/.
   sleep 0.01
 done
 
-feh --auto-zoom --scale-down ~/Pictures/.float_images/float_$index.png
+feh --auto-zoom --scale-down $HOME/Pictures/.float_images/float_$index.png
 
-# terminate script on closing the feh instance
-trap "rm ~/Pictures/.float_images/float_$index.png" EXIT
+# remove file upon closing the feh instance
+trap "rm $HOME/Pictures/.float_images/float_$index.png" EXIT

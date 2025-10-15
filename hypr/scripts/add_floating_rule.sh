@@ -15,6 +15,6 @@ fi
 
 rule="windowrulev2 = float, class:^($class)$, initialTitle:^($initialTitle)$" 
 
-if [ ! $(grep -F '"$rule"' ~/.config/hypr/hyprland.conf) > /dev/null ]; then
-  echo "$rule" >> ~/.config/hypr/window_rules.conf
+if [ ! $(grep -F '"$rule"' $HOME/.config/hypr/hyprland.conf) > /dev/null ]; then
+  echo "$rule" >> $HOME/.config/hypr/window_rules.conf
 fi

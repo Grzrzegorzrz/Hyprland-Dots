@@ -21,7 +21,7 @@
 #   workspace above the current up-most if currently on normal workspace
 # - vertical workspace 1 is persistent
 
-index_file=~/.config/hypr/scripts/vertical_index
+index_file=$HOME/.config/hypr/scripts/vertical_index
 
 if [ ! -f $index_file ]; then
   printf "0" >> $index_file
@@ -43,9 +43,7 @@ upper=$(hyprctl clients -j \
            | sort -u \
            | tail -n 1
 )
-if [ "$upper" == "" ]; then
-  upper=0
-fi
+upper="${upper:-0}"
 
 if [ $1 == "--move" ]; then
   move=true
@@ -67,7 +65,7 @@ if [ $next_layer -gt $(($upper)) ] && [ ! "$next_layer" == "1" ]; then
 fi
 
 # cycle downwards
-if [ "$next_layer" == "-1" ]; then
+if [ "$next_layer" -eq -1 ]; then
   if [ "$upper" == "0" ]; then
     next_layer=$(($upper+1))
 
@@ -75,7 +73,7 @@ if [ "$next_layer" == "-1" ]; then
     next_layer=$(($upper))
 
     if [ "$move" == true ]; then
-      next_layer=$(($next_layer+1))
+      next_layer=$((next_layer+1))
     fi
   fi
 fi
