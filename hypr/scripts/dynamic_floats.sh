@@ -20,7 +20,12 @@ while [ -f $HOME/Pictures/.float_images/float_$index.png ]; do
   ((index++))
 done
 
-flameshot gui -s -p "$HOME/Pictures/.float_images/float_$index.png"
+out=$(flameshot gui -s -p "$HOME/Pictures/.float_images/float_$index.png" 2>&1)
+
+# terminate script if flameshot aborted
+if [[ $out == *"abort"* ]]; then
+  exit
+fi
 
 # wait for image to exist
 while [ ! -f $HOME/Pictures/.float_images/float_$index.png ]; do
