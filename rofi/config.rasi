@@ -1,11 +1,11 @@
 configuration {
   modes: [window,drun,run,ssh,recursivebrowser];
   drun {
-    filter-regex: "^(proc|temp)(/|$)";
+    filter-regex: "^(proc|tmp|var)(/|$)";
   }
   recursivebrowser {
     directory: "/";
-    filter-regex: "^(proc|temp)(/|$)";
+    filter-regex: "^(proc|tmp|var)(/|$)";
   }
   kb-accept-entry: "Control+m,Return,KP_Enter,Control+l";
   kb-remove-to-eol: "";
