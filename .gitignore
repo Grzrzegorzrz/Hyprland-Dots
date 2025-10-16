@@ -2,7 +2,7 @@
 
 !hypr
 hypr/scripts/launch_to_special.sh
-hypr/scripts/vertical_index
+hypr/scripts/.vertical_index
 
 !yazi
 yazi/plugins/interactive.yazi

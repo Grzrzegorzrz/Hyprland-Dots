@@ -21,7 +21,7 @@
 #   workspace above the current up-most if currently on normal workspace
 # - vertical workspace 1 is persistent
 
-index_file=$HOME/.config/hypr/scripts/vertical_index
+index_file=$HOME/.config/hypr/scripts/.vertical_index
 
 if [ ! -f $index_file ]; then
   printf "0" >> $index_file
