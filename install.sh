@@ -18,7 +18,7 @@ zen-browser --headless & sleep 0.1; kill $(pgrep -x "zen-bin")
 
 mv ./zen/chrome ~/.zen/"$(ls ~/.zen | grep Default)"/
 rm -rf ./zen
-rm -rf ./.cache/zen
+# rm -rf ./.cache/zen
 
 # moving configs
 if [ -d ~/.config/foot ]; then mv ~/.config/foot ~/.config/foot_backup; fi
@@ -33,15 +33,7 @@ mv ./* ~/.config
 mv .install.sh install.sh
 
 # yazi
-echo ''' if [ -n "$YAZI_LEVEL" ]; then
-  prefix=""
-
-  for ((i=0; i<YAZI_LEVEL; i++)); do
-    prefix="${prefix}󰇥"
-  done
-
-  PS1=" $prefix $PS1"
-fi ''' >> ~/.yazi.sh
+ln $HOME/.config/hypr/scripts/yazi.sh $HOME/.yazi.sh
 echo '''source ~/.yazi.sh''' >> ~/.bashrc
 
 # zoxide
