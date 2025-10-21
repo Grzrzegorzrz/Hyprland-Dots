@@ -10,7 +10,7 @@ if [ "$output" = "Not moving to workspace because it didn't change." ]; then
     hyprctl dispatch movetoworkspace "special:special"
   fi
 
-  while getopts 'dtsveu.' flag; do
+  while getopts 'dtsveug' flag; do
     case $flag in
       d)
         hyprctl dispatch movetoworkspace "special:discord"
