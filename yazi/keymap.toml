@@ -136,12 +136,13 @@ keymap = [
 	{ on = [ ",", "r" ], run = "sort random --reverse=no",                      desc = "Sort randomly" },
 
 	# Goto
-	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
-	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Goto ~/.config" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Goto ~/Downloads" },
+	{ on = [ "g", "h" ],       run = "cd ~",                                 desc = "Go home" },
+	{ on = [ "g", "c" ],       run = "cd ~/.config",                         desc = "Goto ~/.config" },
+	{ on = [ "g", "d" ],       run = "cd ~/Downloads",                       desc = "Goto ~/Downloads" },
 	{ on = [ "g", "s" ],       run = "cd ~/Documents/school/third\\ year",   desc = "Goto school" },
-	{ on = [ "g", "r" ],       run = "cd /",   desc = "Goto root" },
-	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
+	{ on = [ "g", "r" ],       run = "cd /",                                 desc = "Goto root" },
+	{ on = [ "g", "p" ],       run = "cd ~/Pictures",                        desc = "Goto ~/Pictures" },
+	{ on = [ "g", "<Space>" ], run = "cd --interactive",                     desc = "Jump interactively" },
 
 	# Tabs
 	{ on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
