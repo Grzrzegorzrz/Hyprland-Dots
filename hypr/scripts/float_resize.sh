@@ -11,10 +11,10 @@ h1=$(echo "$window" | grep size: | awk -F',|:' '{print $3}')
 
 hyprctl dispatch togglefloating
 
-if [ "$float" == "0" ]; then
+if [ "$float" = "0" ]; then
   a=$(awk "BEGIN {print int($l1 * 0.8)}")
   b=$(awk "BEGIN {print int($h1 * 0.8)}")
-  hyprctl dispatch resizeactive exact $a $b
+  hyprctl dispatch resizeactive exact "$a" "$b"
 
   window=$(hyprctl activewindow)
 
@@ -25,5 +25,5 @@ if [ "$float" == "0" ]; then
 else
   a=$(awk "BEGIN {print int($l1 * 1.25)}")
   b=$(awk "BEGIN {print int($h1 * 1.25)}")
-  hyprctl dispatch resizeactive exact $a $b
+  hyprctl dispatch resizeactive exact "$a" "$b"
 fi

@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 # symlinked to home directory
 
 if [ -n "$YAZI_LEVEL" ]; then
   duck=""
 
-  for ((i=0; i<YAZI_LEVEL; i++)); do
+  i=0
+  while [ $i -lt "$YAZI_LEVEL" ]; do
     duck="${duck}󰇥"
+    i=$((i+1))
   done
 
   PS1=" $duck $PS1"

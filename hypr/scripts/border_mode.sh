@@ -2,7 +2,7 @@
 
 # script to toggle border decorations
 
-if [[ "$(hyprctl getoption decoration:dim_inactive | awk 'NR==1{print $2}')" == 0 ]]; then
+if [ "$(hyprctl getoption decoration:dim_inactive | awk 'NR==1{print $2}')" = 0 ]; then
   # dimmed mode
   hyprctl keyword decoration:dim_inactive true
 

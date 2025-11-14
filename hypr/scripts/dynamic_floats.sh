@@ -11,19 +11,19 @@
 dir=$HOME/Pictures/.float_images
 
 # create /Pictures/.float_images/ if non existent
-if [ ! -d $dir ]; then
-  mkdir -p $dir
+if [ ! -d "$dir" ]; then
+  mkdir -p "$dir"
 fi
 
 index=0
 
 # launch and bind all leftover floats on boot
-if [ $1 == "leftover" ]; then
+if [ "$1" = "leftover" ]; then
   if [ "$(ls -A "$dir")" ]; then
-    for f in $dir/*; do
+    for f in "$dir"/*; do
       (
-        feh --auto-zoom --scale-down $f
-        trap "rm "$f"" EXIT
+        feh --auto-zoom --scale-down "$f"
+        trap 'rm "$f"' EXIT
       ) &
     done
   fi
@@ -32,19 +32,19 @@ if [ $1 == "leftover" ]; then
 fi
 
 # set index to the lowest number avaliable
-while [ -f $dir/float_$index.png ]; do
-  ((index++))
+while [ -f "$dir/float_$index.png" ]; do
+  index=$((index + 1))
 done
 
 out=$(flameshot gui -s -p "$dir/float_$index.png")
 
 # terminate script if flameshot aborted
-if [[ $out == *"abort"* ]]; then
-  exit
-fi
+case "$out" in
+  *abort*) exit
+esac
 
 # wait for image to exist
-while [ ! -f $dir/float_$index.png ]; do
+while [ ! -f "$dir/float_$index.png" ]; do
   sleep 0.01
 done
 # wait for image to finish rendering
@@ -52,7 +52,7 @@ while ! cmp -s "$dir/float_$index.png" "$dir/float_$index.png"; do
   sleep 0.01
 done
 
-feh --auto-zoom --scale-down $dir/float_$index.png
+feh --auto-zoom --scale-down "$dir/float_$index.png"
 
 # remove file upon closing the feh instance
-trap "rm $dir/float_$index.png" EXIT
+trap 'rm "$dir/float_$index.png"' EXIT

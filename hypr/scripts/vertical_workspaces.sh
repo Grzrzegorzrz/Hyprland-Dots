@@ -23,8 +23,8 @@
 
 index_file=$HOME/.config/hypr/scripts/.vertical_index
 
-if [ ! -f $index_file ]; then
-  printf "0" >> $index_file
+if [ ! -f "$index_file" ]; then
+  printf "0" >> "$index_file"
 fi
 
 window=$(hyprctl activewindow)
@@ -45,43 +45,43 @@ upper=$(hyprctl clients -j \
 )
 upper="${upper:-0}"
 
-if [ $1 == "--move" ]; then
+if [ "$1" = "--move" ]; then
   move=true
   shift
 fi
 
-if [ "$window" == "Invalid" ]; then
-  layer=$(($(cat $index_file)))
+if [ "$window" = "Invalid" ]; then
+  layer=$(($(cat "$index_file")))
 fi
-if [ $(($layer)) -gt $upper ]; then
+if [ $((layer)) -gt "$upper" ]; then
   next_layer=$upper
 else
-  next_layer=$(($layer + $1))
+  next_layer=$((layer + $1))
 fi
 
 # if past upper bound
-if [ $next_layer -gt $(($upper)) ] && [ ! "$next_layer" == "1" ]; then
+if [ "$next_layer" -gt $((upper)) ] && [ ! "$next_layer" = "1" ]; then
     next_layer=0
 fi
 
 # cycle downwards
 if [ "$next_layer" -eq -1 ]; then
-  if [ "$upper" == "0" ]; then
-    next_layer=$(($upper+1))
+  if [ "$upper" = "0" ]; then
+    next_layer=$((upper+1))
 
   else
-    next_layer=$(($upper))
+    next_layer=$((upper))
 
-    if [ "$move" == true ]; then
+    if [ "$move" = true ]; then
       next_layer=$((next_layer+1))
     fi
   fi
 fi
 
 # change or move to next workspace
-if [ $next_layer -eq 0 ]; then
+if [ "$next_layer" -eq 0 ]; then
 
-  if [ "$move" == true ]; then
+  if [ "$move" = true ]; then
     hyprctl dispatch movetoworkspace $(($(hyprctl activeworkspace | awk 'NR==1 {print $3}')))
     echo "condition: zeroth + move"
   else
@@ -90,10 +90,10 @@ if [ $next_layer -eq 0 ]; then
     echo "condition: zeroth"
   fi
 
-  echo 0 > $index_file
+  echo 0 > "$index_file"
 
 else
-  if [ "$move" == true ]; then
+  if [ "$move" = true ]; then
     hyprctl dispatch movetoworkspace "special:vertical.$next_layer"
     echo "condition: vertical + move"
   else
@@ -101,9 +101,9 @@ else
     echo "condition: vertical"
   fi
 
-  echo $next_layer > $index_file
+  echo "$next_layer" > "$index_file"
 fi
 
 echo "next_layer: $next_layer"
 echo "upper: $upper"
-echo "current workspace: $(cat $index_file)"
+echo "current workspace: $(cat "$index_file")"

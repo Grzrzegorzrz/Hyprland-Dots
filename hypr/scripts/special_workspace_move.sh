@@ -5,8 +5,7 @@
 output="$(hyprctl dispatch movetoworkspace "r+0")"
 
 if [ "$output" = "Not moving to workspace because it didn't change." ]; then
-
-  if (( $# == 0 )); then
+  if [ "$#" -eq 0 ]; then
     hyprctl dispatch movetoworkspace "special:special"
   fi
 
@@ -20,9 +19,6 @@ if [ "$output" = "Not moving to workspace because it didn't change." ]; then
       ;;
       s)
         hyprctl dispatch movetoworkspace "special:spotify"
-      ;;
-      b)
-        hyprctl dispatch movetoworkspace "special:slack"
       ;;
       v)
         hyprctl dispatch movetoworkspace "special:vertical"
