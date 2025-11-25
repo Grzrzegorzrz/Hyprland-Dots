@@ -36,7 +36,7 @@ while [ -f "$dir/float_$index.png" ]; do
   index=$((index + 1))
 done
 
-out=$(flameshot gui -s -p "$dir/float_$index.png")
+out=$(flameshot gui -s -p "$dir/float_$index.png" 2>&1)
 
 # terminate script if flameshot aborted
 case "$out" in
