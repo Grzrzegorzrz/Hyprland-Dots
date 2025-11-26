@@ -10,7 +10,7 @@ keymap = [
         { on = [ "<C-s>" ], run = 'shell "nvim ./" --block --confirm' },
         { on = [ "<C-k>" ], run = 'shell "sudo yazi ./" --block --confirm' },
 	{ on = [ "<C-c>" ], run = "escape" },
-        { on = [ "<C-n>" ], run = '''shell ' dragon-drop -x -i -T "$1"' --confirm''' },
+        { on = [ "O" ], run = '''shell ' dragon-drop -x -i -T "$1"' --confirm''' },
         { on = [ "<C-e>" ], run = '''shell --
           paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
           betterbird -compose "attachment='$paths'"
@@ -51,7 +51,7 @@ keymap = [
 	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
 
 	{ on = "H", run = "back",    desc = "Go back to the previous directory" },
-	{ on = "L", run = "forward", desc = "Go forward to the next directory" },
+	# { on = "L", run = "forward", desc = "Go forward to the next directory" },
 
 	# Toggle
 	{ on = "<Space>", run = [ "toggle", "arrow 1" ], desc = "Toggle the current selection state" },
@@ -70,8 +70,11 @@ keymap = [
 	{ on = "<Tab>", run = "spot", desc = "Spot hovered file" },
 
 	# Operation
-	{ on = "o",         run = "open",                        desc = "Open selected files" },
-	{ on = "O",         run = "open --interactive",          desc = "Open selected files interactively" },
+	# { on = "o",         run = "open",                        desc = "Open selected files" },
+	# { on = "O",         run = "open --interactive",          desc = "Open selected files interactively" },
+	{ on = "o",         run = "create",                      desc = "Create a file (ends with / for directories)" },
+	{ on = "<C-l>",     run = "open",                        desc = "Open selected files" },
+	{ on = "<C-L>",     run = "open --interactive",          desc = "Open selected files interactively" },
 	{ on = "<Enter>",   run = "open",                        desc = "Open selected files" },
 	{ on = "<S-Enter>", run = "open --interactive",          desc = "Open selected files interactively" },
 	{ on = "y",         run = "yank",                        desc = "Yank selected files (copy)" },
