@@ -31,7 +31,7 @@ esac
 
 # open new window on vertical.1 if nothing on vertical.1
 if [ "$(hyprctl dispatch workspace special:vertical.1 > /dev/null;
-          hyprctl activewindow)" = "Invalid" ]; then
+        hyprctl activewindow)" = "Invalid" ]; then
   exec $browser --new-window "$url"
 
 # open in existing vertical.1 zen window

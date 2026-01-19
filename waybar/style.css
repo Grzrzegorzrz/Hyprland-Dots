@@ -3,38 +3,38 @@
 @define-color background #000000;
 
 * {
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 17px;
-    padding: 0;
-    margin: 0;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 17px;
+  padding: 0;
+  margin: 0;
 }
 
 #waybar {
-    color: @foreground;
-    background-color: @background;
+  color: @foreground;
+  background-color: @background;
 }
 
 #workspaces {
-    padding-right: 0.3em;
+  padding-right: 0.3em;
 }
 
 #workspaces button {
-    color: @foreground-inactive;
-    padding-left: 0.7em;
+  color: @foreground-inactive;
+  padding-left: 0.7em;
 }
 
 #workspaces button.active {
-    color: @foreground;
+  color: @foreground;
 }
 
 #memory,
 #cpu,
 #temperature {
-    padding-left: 1em
+  padding-left: 1em;
 }
 
 #memory {
-    padding-left: 2em
+  padding-left: 2em;
 }
 
 #wireplumber,
@@ -45,25 +45,25 @@
 #pulseaudio,
 #bluetooth,
 #tray {
-    padding-right: 1em 
+  padding-right: 1em;
 }
 
 #battery.warning {
-    color: #ece81a
+  color: #ece81a;
 }
 
 #battery.critical {
-    color: #ff0000
+  color: #ff0000;
 }
 
 #memory.warning {
-    color: #ece81a
+  color: #ece81a;
 }
 
 #memory.critical {
-    color: #ff0000
+  color: #ff0000;
 }
 
 #wireplumber.muted {
-    color: #ff0000
+  color: #ff0000;
 }

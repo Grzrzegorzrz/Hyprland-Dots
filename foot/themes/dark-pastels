@@ -2,30 +2,30 @@
 # my personal adoption of konsole's dark pastels
 
 [colors]
-cursor=14161b dcdccc
+cursor=14161b dcdccc #14161b #dcdccc
 
 # default text fore/background
-foreground=dcdccc
-background=2c2c2c
+foreground=dcdccc #dcdccc
+background=2c2c2c #2c2c2c
 
 # selected text
-selection-foreground=14161b
-selection-background=b0b0a2
+selection-foreground=14161b #14161b
+selection-background=b0b0a2 #b0b0a2
 
-regular0=3f3f3f
-regular1=705050
-regular2=60b48a
-regular3=dfaf8f
-regular4=9ab8d7
-regular5=dc8cc3
-regular6=8cd0d3
-regular7=dcdccc
+regular0=3f3f3f #3f3f3f
+regular1=705050 #705050
+regular2=60b48a #60b48a
+regular3=dfaf8f #dfaf8f
+regular4=9ab8d7 #9ab8d7
+regular5=dc8cc3 #dc8cc3
+regular6=8cd0d3 #8cd0d3
+regular7=dcdccc #dcdccc
 
-bright0=709080
-bright1=dca3a3
-bright2=72d5a3
-bright3=f0dfaf
-bright4=94bff3
-bright5=ec93d3
-bright6=93e0e3
-bright7=ffffff
+bright0=709080  #709080
+bright1=dca3a3  #dca3a3
+bright2=72d5a3  #72d5a3
+bright3=f0dfaf  #f0dfaf
+bright4=94bff3  #94bff3
+bright5=ec93d3  #ec93d3
+bright6=93e0e3  #93e0e3
+bright7=ffffff  #ffffff
