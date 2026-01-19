@@ -50,7 +50,7 @@ if [ "$1" = "--move" ]; then
   shift
 fi
 
-if [ "$window" = "Invalid" ]; then
+if [ "$window" = "Invalid" ] || [ "$(cat "$index_file")" = 0 ]; then
   layer=$(($(cat "$index_file")))
 fi
 if [ $((layer)) -gt "$upper" ]; then
