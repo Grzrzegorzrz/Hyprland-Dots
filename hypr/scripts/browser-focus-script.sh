@@ -30,8 +30,8 @@ case "$url" in
 esac
 
 # open new window on vertical.1 if nothing on vertical.1
-if [ "$(hyprctl dispatch workspace special:vertical.1 > /dev/null;
-        hyprctl activewindow)" = "Invalid" ]; then
+if ! hyprctl clients | grep vertical.1; then
+  hyprctl dispatch workspace special:vertical.1
   exec $browser --new-window "$url"
 
 # open in existing vertical.1 zen window
