@@ -8,7 +8,7 @@
 
 url=$1
 
-# binaries; set to whatever binary you use
+browser_class="zen" # can be found via `hyprctl activewindow`
 browser=/opt/zen-browser-bin/zen-bin
 spotify=/opt/spotify/spotify
 # spotify=/bin/spotify
@@ -29,12 +29,19 @@ case "$url" in
     ;;
 esac
 
-# open new window on vertical.1 if nothing on vertical.1
-if ! hyprctl clients | grep vertical.1; then
-  hyprctl dispatch workspace special:vertical.1
+# open vertical.1 workspace
+hyprctl dispatch workspace special:vertical.1
+
+# open new window on vertical.1 if no browser on vertical.1
+# (parse hyprctl clients for data on windows containing "vertical.1")
+# (then grep for "class: zen")
+if ! hyprctl clients \
+   | awk -v RS= '/special:vertical\.1/' \
+   | grep "class: $browser_class"; then
+
   exec $browser --new-window "$url"
 
-# open in existing vertical.1 zen window
+# else open normally
 else
   exec $browser "$url"
 fi
