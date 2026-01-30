@@ -145,7 +145,7 @@ keymap = [
     { on = [ "g", "c" ],       run = "cd ~/.config",                         desc = "Goto ~/.config" },
     { on = [ "g", "d" ],       run = "cd ~/Downloads",                       desc = "Goto ~/Downloads" },
     { on = [ "g", "s" ],       run = "cd ~/Documents/school/third\\ year",   desc = "Goto school" },
-    { on = [ "g", "r" ],       run = "cd /",                                 desc = "Goto root" },
+    { on = [ "g", "/" ],       run = "cd /",                                 desc = "Goto root" },
     { on = [ "g", "p" ],       run = "cd ~/Pictures",                        desc = "Goto ~/Pictures" },
     { on = [ "g", "<Space>" ], run = "cd --interactive",                     desc = "Jump interactively" },
 
