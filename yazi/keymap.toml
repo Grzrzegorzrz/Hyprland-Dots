@@ -100,6 +100,8 @@ keymap = [
     { on = "S",         run = "search --via=rg",             desc = "Search files by content via ripgrep" },
     #{ on = "<C-s>",     run = "escape --search",             desc = "Cancel the ongoing search" },
     { on = "<C-/>",     run = "plugin zoxide",               desc = "Jump to a directory via zoxide" },
+    { on = [ "<A-/>" ], run = 'shell "zoxide add ./" --block --confirm', desc = "Add a zoxide dir" },
+    { on = [ "<A-z>" ], run = 'shell "zoxide remove ./" --block --confirm', desc = "Remove a zoxide dir" },
     { on = "Z",         run = "plugin fzf",                  desc = "Jump to a file/directory via fzf" },
 
     # Linemode
