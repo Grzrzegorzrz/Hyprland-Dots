@@ -24,13 +24,13 @@ esac
 # open spotify
 case "$url" in
   *open.spotify.com*)
-    hyprctl dispatch workspace special:spotify
+    hyprctl dispatch 'hl.dsp.focus({ workspace = "special:spotify" })'
     exec $spotify "$url"
     ;;
 esac
 
 # open vertical.1 workspace
-hyprctl dispatch workspace special:vertical.1
+hyprctl dispatch 'hl.dsp.focus({ workspace = "special:vertical.1" })'
 
 # open new window on vertical.1 if no browser on vertical.1
 # (parse hyprctl clients for data on windows containing "vertical.1")

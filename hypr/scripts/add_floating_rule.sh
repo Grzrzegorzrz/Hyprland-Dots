@@ -13,8 +13,9 @@ if [ "$initialTitle" = "initialTitle:" ]; then
   initialTitle=""
 fi
 
-rule="windowrulev2 = float, class:^($class)$, initialTitle:^($initialTitle)$" 
+rule="hl.window_rule({ match = { class = [[^($class)$]], initial_title = [[^($initialTitle)$]] }, float = true })"
 
-if ! grep -F "$rule" "$HOME/.config/hypr/hyprland.conf" > /dev/null 2>&1; then
-  echo "$rule" >> "$HOME/.config/hypr/window_rules.conf"
+if ! grep -F "$rule" "$HOME/.config/hypr/window_rules_dynamic.lua" > /dev/null 2>&1; then
+  hyprctl eval "$rule"
+  echo "$rule" >> "$HOME/.config/hypr/window_rules_dynamic.lua"
 fi

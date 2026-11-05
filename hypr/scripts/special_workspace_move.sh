@@ -2,38 +2,38 @@
 
 # helper script for moving window to special workspaces
 
-output="$(hyprctl dispatch movetoworkspace "r+0")"
+output="$(hyprctl dispatch 'hl.dsp.window.move({ workspace = "r+0" })')"
 
-if [ "$output" = "Not moving to workspace because it didn't change." ]; then
+if [ "$output" = "ok" ]; then
   if [ "$#" -eq 0 ]; then
-    hyprctl dispatch movetoworkspace "special:special"
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:special" })'
   fi
 
   while getopts 'dtsveug' flag; do
     case $flag in
       d)
-        hyprctl dispatch movetoworkspace "special:discord"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:discord" })'
       ;;
       u)
-        hyprctl dispatch movetoworkspace "special:email"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:email" })'
       ;;
       s)
-        hyprctl dispatch movetoworkspace "special:spotify"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:spotify" })'
       ;;
       v)
-        hyprctl dispatch movetoworkspace "special:vertical"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:vertical" })'
       ;;
       e)
-        hyprctl dispatch movetoworkspace "special:e"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:e" })'
       ;;
       t)
-        hyprctl dispatch movetoworkspace "special:top"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:top" })'
       ;;
       g)
-        hyprctl dispatch movetoworkspace "special:background"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:background" })'
       ;;
       *)
-        hyprctl dispatch movetoworkspace "special:special"
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = "special:special" })'
       ;;
     esac
   done

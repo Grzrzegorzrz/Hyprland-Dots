@@ -82,11 +82,11 @@ fi
 if [ "$next_layer" -eq 0 ]; then
 
   if [ "$move" = true ]; then
-    hyprctl dispatch movetoworkspace $(($(hyprctl activeworkspace | awk 'NR==1 {print $3}')))
+    hyprctl dispatch "hl.dsp.window.move({ workspace = $(($(hyprctl activeworkspace | awk 'NR==1 {print $3}'))) })"
     echo "condition: zeroth + move"
   else
-    hyprctl dispatch togglespecialworkspace void
-    hyprctl dispatch togglespecialworkspace void
+    hyprctl dispatch 'hl.dsp.workspace.toggle_special("void")'
+    hyprctl dispatch 'hl.dsp.workspace.toggle_special("void")'
     echo "condition: zeroth"
   fi
 
@@ -94,10 +94,10 @@ if [ "$next_layer" -eq 0 ]; then
 
 else
   if [ "$move" = true ]; then
-    hyprctl dispatch movetoworkspace "special:vertical.$next_layer"
+    hyprctl dispatch "hl.dsp.window.move({ workspace = \"special:vertical.$next_layer\" })"
     echo "condition: vertical + move"
   else
-    hyprctl dispatch togglespecialworkspace "vertical.$next_layer"
+    hyprctl dispatch "hl.dsp.workspace.toggle_special(\"vertical.$next_layer\")"
     echo "condition: vertical"
   fi
 
